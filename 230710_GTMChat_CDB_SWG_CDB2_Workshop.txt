@@ -1,0 +1,15 @@
+Me to Everyone	02:13 PM	There is an empty Gitlab repo for this workshop; you can 'opt-in' to this Gitlab repo from the CDB SWG project on the OGC Portal
+Me to Everyone	02:13 PM	https://gitlab.ogc.org/ogc/CDBV2-2023-Summer-Workshop
+Jerome St-Louis (Ecere) to Everyone	02:15 PM	@David any idea why CDB SWG files do not appear anymore? -- https://portal.ogc.org/index.php?m=projects&a=view&project_id=466
+Jerome St-Louis (Ecere) to Everyone	02:18 PM	https://github.com/sofwerx/cdb2-eng-report/blob/master/11-tiling-coverages.adoc#san-diego-cdb-layers-packaged-together -- This has direct links to the files which hopefully still work
+Coy Stewart (CAE) to Everyone	02:18 PM	I am seeing what David is presenting in the CDB SWG Files tab...the Files are appearing...
+Jerome St-Louis (Ecere) to Everyone	02:29 PM	https://gitlab.ogc.org/ogc/CDBV2-2023-Summer-Workshop/-/wikis/Summer-2023-CDB-Workshop -- Live-editing the wiki
+Brian Ford to Everyone	02:29 PM	So, we have some design decisions that are open and seem to be required before trying to implement, and then we have the practicality testing of implementation.  It would seem we need to tie down a few of the top level data organization things first so that teams can assist in implementation testing and feedback.  Those things would seem to center around how geo-packages are encoded and possibly reference one another, and how data is packaged in the geo-package.  Is that already clear to everyone?
+Brian Ford to Everyone	02:31 PM	That wiki link is not working for me 404.
+Ryan Franz (FSI) to Everyone	02:31 PM	@ford - You have to opt in on the portal
+Jerome St-Louis (Ecere) to Everyone	02:35 PM	https://gsa-temp-public.s3.us-east-1.amazonaws.com/CDB_san_diego_v4.1.zip
+Jerome St-Louis (Ecere) to Everyone	02:35 PM	https://docs.ogc.org/per/21-058.html#dataset-notes-san-diego-cdb
+Jerome St-Louis (Ecere) to Everyone	02:36 PM	there are few other datasets here: https://docs.ogc.org/per/21-058.html#_datasets
+Brian Ford to Everyone	02:36 PM	I opted in to all and I can get there now.
+Jerome St-Louis (Ecere) to Everyone	02:37 PM	https://gitlab.ogc.org/ogc/CDBV2-2023-Summer-Workshop/-/wikis/Summer-2023-CDB-Workshop
+Jerome St-Louis (Ecere) to Everyone	02:50 PM	https://github.com/ecere/geopackage/tree/master/spec/3d-models
