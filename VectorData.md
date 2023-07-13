@@ -2,6 +2,8 @@
 
 ## Open Questions
 
+
+-----------------
 ## Decisions
 
 ### Significant Size (Geometric Error) Table
@@ -11,11 +13,14 @@ How to calculate a model's or vector's significant size:
 * Find the first significant size in the table that is the same or smaller in this table
 * Put the model or geometry at this LOD level in the CDB
 
-The formula for the lower bound is:
+The formula for the lower bound is based on the approximate length in meters of an arc of one degree at the equator:
 * For CDB 1.x:
    * $ Significant Size Lower Bound > { 111319 \over 2^{LOD+11} } $
 * For CDB 2.0:
    * $ Significant Size Lower Bound > { 111319 \over 2^{LOD+4} } $
+
+The actual equation to obtain the value of 111319 meters per degree at the equator is $ L = {a \times \pi \times 180 deg} $.
+
 
 | CDB 2 Level | CDB 1.x Level | Significant Size |
 | ----------- | ------------- | ---------------- |
