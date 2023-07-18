@@ -24,7 +24,7 @@ Next, use that value to calculate the lower bound of the significant size for a 
 
 $$ SSLowerBound \gt {L \times TileWidthInDegrees \over 2^{level+1} * TileWidthInPixels} $$
 
-So a given zoom level or level of detail will contain features with a geometric error larger than the next finest level's pixel spacing.
+This formula corresponds to the meters per pixel of the next highest/finest level in the 2D Tile Matrix Set.  So for a given zoom level, or level of detail, the specified level will contain features with a geometric error larger than the next finest level's pixel spacing.
 
 ---
 ### Assumptions
@@ -36,7 +36,7 @@ These formulas assume the following:
 ---
 ### CDB 1.x Significant Size
 
-For CDB 1.x tiling, the tile size at the equator is 1 degree, and the number of pixels per tile at level 0 is 1024.  LODs can be as low as -10, and the formula works for these as well, since the pixels per tile is halved and the size does not change:
+For CDB 1.x tiling, the tile size at the equator is 1 degree, and the number of pixels per tile at level 0 is 1024.  LODs can be as low as -10, and the formula works for these negative levels as well, since the pixels per tile is halved and the size does not change.  So the equation works out to be:
 
 $$ SSLowerBound > { L \times 1 \over 2^{LOD+1} \times 1024 } $$
 
