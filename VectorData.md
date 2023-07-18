@@ -6,9 +6,25 @@
 -----------------
 ## Decisions
 
-### Significant Size (Geometric Error) Table
+----
+## Significant Size (Geometric Error) Table
 
-> TODO: Define Significant Size
+> **_Requirement:_**  A 3D model or a polygonal vector feature **SHALL** be placed in a CDB's level of detail (or zoom level) at every level that has a pixel spacing that is smaller than the feature's significant size (or geometric error), if and only if that level exists in the CDB.<br>
+> A linear vector feature **SHALL** be placed in a CDB's level of detail (or zoom level) at every level that has a pixel spacing that is smaller than the feature's width (which is the feature's significant size).
+
+> _Note:_  The CDB's levels must extend high enough to include this feature
+
+> **_Requirement:_**  IF a 3D model has more than one representation or level of detail in its appearance, each refinement of the model is placed at the CDB level of detail (or zoom level) at which the significant size of the geometric change from the coarser model is larger than the significant size of the level.
+
+> **_Requirement:_**  For a 2D geometric vector, the vector SHALL be simplified to reduce complexity at coarser CDB levels so that the change in the vector matches the significant size (or geometric error) of that level within the CDB.
+
+### What is Significant Size
+
+### How to Calculate Significant Size For a Feature
+
+> TODO: Define How to calculate Significant Size
+
+### How to Match a Significant Size to a CDB's Level
 
 Given a model or 2D polygonal vector with a significant size or geometric error, to store that feature in CDB requires calculation of the zoom level or level of detail (LOD) that the feature should be present within.  This calculated level is a function of the 2D TMS level's pixel size for a raster.  Using the following functions, one can construct a table that represents what size features are present at a given zoom level or level of detail.
 
@@ -16,15 +32,17 @@ The formula for calculating the significant size per level is constructed from t
 
 First, calculate the length of a degree in meters at the equator, "L":
 
-$$ L = a \times {\pi \over 180 } \approx 111,319.4 $$
+$$ L = a \times {\pi \over 180 } \approx 111,319.5 $$
 
 where "a" is the length of the major semi-axis of the WGS-84 ellipsoid, namely 6378137.0m; "a" is also known as the equatorial radius.
 
 Next, use that value to calculate the lower bound of the significant size for a tile:
 
-$$ SSLowerBound \gt {L \times TileWidthInDegrees \over 2^{level+1} * TileWidthInPixels} $$
+$$ SS \gt L \times {TileWidthInDegrees \over TileWidthInPixels} \times { 1 \over TileRatio} $$
 
 This formula corresponds to the meters per pixel of the next highest/finest level in the 2D Tile Matrix Set.  So for a given zoom level, or level of detail, the specified level will contain features with a geometric error larger than the next finest level's pixel spacing.
+
+> **_Requirement:_**  The significant size calculation for a 2D Tile Matrix Set SHALL be determined by the formula above.
 
 ---
 ### Assumptions
@@ -36,13 +54,19 @@ These formulas assume the following:
 ---
 ### CDB 1.x Significant Size
 
-For CDB 1.x tiling, the tile size at the equator is 1 degree, and the number of pixels per tile at level 0 is 1024.  LODs can be as low as -10, and the formula works for these negative levels as well, since the pixels per tile is halved and the size does not change.  So the equation works out to be:
+For CDB 1.x tiling, at level 0 the tile size at the equator is 1 degree, and the number of pixels per tile is 1024.  For successive positive LODs, the tile size is halved at each level.  For negative LODs, the tile size is fixed, but the pixel count per tile is halved at each successively decreasing level.
 
-$$ SSLowerBound > { L \times 1 \over 2^{LOD+1} \times 1024 } $$
+So the equation for positive LODs with a fixed pixel count and varying tile sizes works out to be:
 
-This function simplifies to this:
+$$ SS >  L \times { {1 \over 2^{LOD}} \over 1024 } \times {1 \over 2} $$
 
-$$ SSLowerBound > { L \over 2^{LOD+11} } $$
+The equation for negative LODs with a changing pixel count changes and fixed tile size is:
+
+$$ SS >  L \times {1 \over 2^{LOD + 10} } \times {1 \over 2} $$
+
+These two functions simplify to the same equation:
+
+$$ SS > { L \over 2^{LOD+11} } $$
 
 This function is used for all tiles, whether near the equator or the poles, because CDB 1.x tiles change size to accomodate the longitude compression that naturally happens.  Below is Table 3-1 from CDB 1.x Volume 1, that is derived from this equation:
 
@@ -70,16 +94,18 @@ This function is used for all tiles, whether near the equator or the poles, beca
 |  9 | SS > 0.106162m |
 | 10 | SS > 0.053081m |
 
+> **_NOTE:_** This table can be expanded up to level 23.  To do so, halve the significant size (geometric error) value at each successive level.
+
 ---
 ### CDB 2.0 Significant Size (GNOSIS Global Grid)
 
-For CDB 2.0 tiling (GNOSIS Global Grid), the tile size starts as 90 x 90 degrees, and the pixels per tile is always 256.  So the significant size equation works out to be:
+For CDB 2.0 tiling (GNOSIS Global Grid), the tile size starts as 90 x 90 degrees at level 0 and halves at each successive level, and the pixels per tile is always 256.  So the significant size equation works out to be:
 
-$$ SSLowerBound > { L \times 90 \over 2^{LOD+1} \times 256 } $$
+$$ SS > L \times { {90 \over 2^{LOD}} \over 256 } \times {1 \over 2} $$
 
 Which simplifies to:
 
-$$ SSLowerBound > { 90L \over 2^{LOD+9} } $$
+$$ SS > { 90L \over 2^{LOD+9} } $$
 
 This function is used for all tiles, whether near the equator or the poles, because CDB 2.0 tiles change size to accomodate the longitude compression that naturally happens.  Below is the equivalent table, similar to the one from CDB 1.0:
 
@@ -106,4 +132,4 @@ This function is used for all tiles, whether near the equator or the poles, beca
 | 18 |  SS >   0.07464m |  9 |
 | 19 |  SS >   0.03732m | 10 |
 
-> **_NOTE:_** At each successive level, the significant size (geometric error) is cut in half.
+> **_NOTE:_** To expand this table to higher levels, halve the significant size (geometric error) value at each successive level.
