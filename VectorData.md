@@ -26,6 +26,14 @@ $$ SSLowerBound \gt {L \times TileWidthInDegrees \over 2^{level+1} * TileWidthIn
 
 So a given zoom level or level of detail will contain features with a geometric error larger than the next finest level's pixel spacing.
 
+---
+### Assumptions
+
+These formulas assume the following:
+* The tiling used attempts to maintain a roughly square tile size as the tiles get closer to the poles.
+* All tiles at a specified zoom level use the same significant size.
+
+---
 ### CDB 1.x Significant Size
 
 For CDB 1.x tiling, the tile size at the equator is 1 degree, and the number of pixels per tile at level 0 is 1024.  LODs can be as low as -10, and the formula works for these as well, since the pixels per tile is halved and the size does not change:
@@ -62,11 +70,16 @@ This function is used for all tiles, whether near the equator or the poles, beca
 |  9 | SS > 0.106162m |
 | 10 | SS > 0.053081m |
 
-### CDB 2.0 Significant Size
+---
+### CDB 2.0 Significant Size (GNOSIS Global Grid)
 
-For CDB 2.0 tiling, the significant size equation works out to be:
+For CDB 2.0 tiling (GNOSIS Global Grid), the tile size starts as 90 x 90 degrees, and the pixels per tile is always 256.  So the significant size equation works out to be:
 
 $$ SSLowerBound > { L \times 90 \over 2^{LOD+1} \times 256 } $$
+
+Which simplifies to:
+
+$$ SSLowerBound > { 90L \over 2^{LOD+9} } $$
 
 This function is used for all tiles, whether near the equator or the poles, because CDB 2.0 tiles change size to accomodate the longitude compression that naturally happens.  Below is the equivalent table, similar to the one from CDB 1.0:
 
