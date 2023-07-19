@@ -14,11 +14,13 @@
 
 > _Note:_  The CDB's levels must extend high enough to include this feature
 
-> **_Requirement:_**  IF a 3D model has more than one representation or level of detail in its appearance, each refinement of the model is placed at the CDB level of detail (or zoom level) at which the significant size of the geometric change from the coarser model is larger than the significant size of the level.
+> **_Requirement:_**  If a 3D model has more than one representation or level of detail in its appearance, each refinement of the model is placed at the CDB level of detail (or zoom level) at which the significant size of the geometric change from the coarser model is larger than the significant size of the level.
 
-> **_Requirement:_**  For a 2D geometric vector, the vector SHALL be simplified to reduce complexity at coarser CDB levels so that the change in the vector matches the significant size (or geometric error) of that level within the CDB.
+> **_Requirement:_**  For a 2D geometric vector, the vector SHALL be simplified to reduce complexity at coarser CDB levels so that the change in the vector from level to level matches the significant size (or geometric error) of that level within the CDB.
 
 ### What is Significant Size
+
+> TODO:  Define Significant Size
 
 ### How to Calculate Significant Size For a Feature
 
@@ -36,9 +38,13 @@ $$ L = a \times {\pi \over 180 } \approx 111,319.5 $$
 
 where "a" is the length of the major semi-axis of the WGS-84 ellipsoid, namely 6378137.0m; "a" is also known as the equatorial radius.
 
-Next, use that value to calculate the lower bound of the significant size for a tile:
+Next, use that value to calculate the lower bound of the significant size for a tile.  This is the meters per degree times the size of a tile's pixel in degrees times the ratio of the current tile's size compared to the next tile's size.
 
-$$ SS \gt L \times {TileWidthInDegrees \over TileWidthInPixels} \times { 1 \over TileRatio} $$
+$$ SS \gt MetersPerDegree \times DegreesPerPixel \times TileLevelRatio $$
+
+Or more precisely:
+
+$$ SS \gt L \times {TileWidthInDegrees \over TileWidthInPixels} \times { TileWidthInDegrees \over NextLevelTileWidthInDegrees} $$
 
 This formula corresponds to the meters per pixel of the next highest/finest level in the 2D Tile Matrix Set.  So for a given zoom level, or level of detail, the specified level will contain features with a geometric error larger than the next finest level's pixel spacing.
 
@@ -96,6 +102,10 @@ This function is used for all tiles, whether near the equator or the poles, beca
 
 > **_NOTE:_** This table can be expanded up to level 23.  To do so, halve the significant size (geometric error) value at each successive level.
 
+To calculate the level from the significant size, the following formula can be used:
+
+$$ Level = ceil(log_2 ( {L \over SS} )) - 11 $$
+
 ---
 ### CDB 2.0 Significant Size (GNOSIS Global Grid)
 
@@ -133,3 +143,7 @@ This function is used for all tiles, whether near the equator or the poles, beca
 | 19 |  SS >   0.03732m | 10 |
 
 > **_NOTE:_** To expand this table to higher levels, halve the significant size (geometric error) value at each successive level.
+
+To calculate the level from the significant size, the following formula can be used:
+
+$$ Level = ceil(log_2 ( {90L \over SS} )) - 9 $$
