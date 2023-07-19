@@ -40,11 +40,11 @@ where "a" is the length of the major semi-axis of the WGS-84 ellipsoid, namely 6
 
 Next, use that value to calculate the lower bound of the significant size for a tile.  This is the meters per degree times the size of a tile's pixel in degrees times the ratio of the current tile's size compared to the next tile's size.
 
-$$ SS \gt MetersPerDegree \times DegreesPerPixel \times TileLevelRatio $$
+$$ SS \gt MetersPerDegree \times DegreesPerPixel \times MetersPerPixelRatioBetweenLevels $$
 
 Or more precisely:
 
-$$ SS \gt L \times {TileWidthInDegrees \over TileWidthInPixels} \times { TileWidthInDegrees \over NextLevelTileWidthInDegrees} $$
+$$ SS \gt L \times {TileWidthInDegrees \over TileWidthInPixels} \times { NextLevelMetersPerPixel \over CurrentLevelMetersPerPixel} $$
 
 This formula corresponds to the meters per pixel of the next highest/finest level in the 2D Tile Matrix Set.  So for a given zoom level, or level of detail, the specified level will contain features with a geometric error larger than the next finest level's pixel spacing.
 
@@ -102,7 +102,7 @@ This function is used for all tiles, whether near the equator or the poles, beca
 
 > **_NOTE:_** This table can be expanded up to level 23.  To do so, halve the significant size (geometric error) value at each successive level.
 
-To calculate the level from the significant size, the following formula can be used:
+To calculate the CDB 1.x level from the significant size, the following formula can be used:
 
 $$ Level = ceil(log_2 ( {L \over SS} )) - 11 $$
 
@@ -144,6 +144,6 @@ This function is used for all tiles, whether near the equator or the poles, beca
 
 > **_NOTE:_** To expand this table to higher levels, halve the significant size (geometric error) value at each successive level.
 
-To calculate the level from the significant size, the following formula can be used:
+To calculate the CDB 2 level from the significant size, the following formula can be used:
 
 $$ Level = ceil(log_2 ( {90L \over SS} )) - 9 $$
