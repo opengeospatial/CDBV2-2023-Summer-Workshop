@@ -2,9 +2,17 @@
 
 ## Open Questions
 
+How should we name the vector tiles tables?
 
------------------
-## Decisions
+
+----
+## Format
+
+Vector Data will be stored in a GeoPackage using the newly created Vector Tiles extension for GeoPackage (https://gitlab.com/imagemattersllc/ogc-vtp2/-/blob/master/extensions/1-vte.adoc)
+
+## Table Naming
+
+??
 
 ----
 ## Significant Size (Geometric Error) Table
