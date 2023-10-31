@@ -197,7 +197,7 @@ so browse there to get a good idea of what is happening, as well as past decisio
 
 The draft **OGC CDB 2.0 - Part 2: GeoPackage Data Store standard** references the [**OGC CDB 2.0 - Part 1: Core**](https://portal.ogc.org/files/104639), [OGC GeoPackage](https://www.geopackage.org/spec131/index.html), and multiple GeoPackage extensions.
 
-## [Contributing](CONTRIBUTING.md)
+## [Contributing](../CONTRIBUTING.md)
 
 The contributor understands that any contributions, if accepted by the OGC Membership, shall be incorporated into OGC Standards documents and that all copyright and intellectual property shall be vested to the OGC.
 
@@ -205,6 +205,6 @@ The CDB Standards Working Group (SWG) is the group at OGC responsible for the st
 
 * [CDB Standards Working Group Charter](https://portal.ogc.org/?m=projects&a=view&project_id=466)
 * [Open issues](https://github.com/opengeospatial/CDBV2-2023-Summer-Workshop/issues)
-* [Copy of License Language](LICENSE)
+* [Copy of License Language](../LICENSE)
 
 Pull Requests from contributors are welcomed. However, please note that by sending a Pull Request or Commit to this GitHub repository, you are agreeing to the terms in the Observer Agreement https://portal.ogc.org/files/?artifact_id=92169
