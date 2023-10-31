@@ -1,12 +1,12 @@
 # OGC CDB 2.0 - Part 2: GeoPackage Data Store
 
-This repository contains the draft [OGC CDB 2.0 - Part 2: GeoPackage Data Store standard, as well as supporting information.
+This repository contains the draft OGC CDB 2.0 - Part 2: GeoPackage Data Store standard, as well as supporting information.
 
-The latest draft candidate standard can be accessed [here in HTML](https://github.com/opengeospatial/CDBV2-2023-Summer-Workshop/releases/download/0.1/23-XXX.html) and [here in PDF](https://github.com/opengeospatial/CDBV2-2023-Summer-Workshop/releases/download/0.1/23-XXX.pdf).
+The latest draft candidate standard can be accessed [here in HTML](https://github.com/opengeospatial/CDBV2-2023-Summer-Workshop/releases/download/v0.1/23-XXX.html) and [here in PDF](https://github.com/opengeospatial/CDBV2-2023-Summer-Workshop/releases/download/v0.1/23-XXX.pdf).
 
 ## Overview
 
-This standard defines a data store implementing the CDB 2.0 Core Conceptual Model based on the OGC GeoPackage data container
+This standard defines a data store implementing the [CDB 2.0 Core](https://portal.ogc.org/files/104639) Conceptual Model based on the [OGC GeoPackage](https://www.geopackage.org/spec131/index.html) data container
 and GeoPackage extensions for storing different data types.
 
 The OGC CDB 2.0 standards define a conceptual model and data stores for encoding different types of data, including detailed 3D environments,
