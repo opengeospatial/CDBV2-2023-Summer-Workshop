@@ -1,0 +1,62 @@
+[[rc_geopackage_data_store]]
+[requirements_class]
+====
+[%metadata]
+label:: http://www.opengis.net/spec/cdb-2/2.0/req/gpkg-data-store
+subject:: Data Store
+inherit:: http://www.opengis.net/spec/cdb/2.0/core
+====
+
+=== Requirements
+
+==== Conceptual basis
+
+[requirement]
+====
+[%metadata]
+label:: /req/gpkg-data-store/conceptual
+description:: For organizing data according to the CDB 2.0 conceptual model
+part:: The data store SHALL store data according to the CDB 2.0 conceptual model.
+====
+
+==== GeoPackage data container
+
+[requirement]
+====
+[%metadata]
+label:: /req/gpkg-data-store/geopackage
+description:: For storing data in GeoPackages
+part:: The data store SHALL consist of one or more GeoPackages.
+====
+
+==== Metadata
+
+[requirement]
+====
+[%metadata]
+label:: /req/gpkg-data-store/metadata
+description:: For storing metadata in GeoPackages
+part:: The data store SHALL store the mandatory metadata defined in the conceptual model in GeoPackage tables.
+====
+
+==== Hierarchical tiles grouping and indexing
+
+[requirement]
+====
+[%metadata]
+label:: /req/gpkg-data-store/grouping
+description:: For making use of the _deterministic hierarchical tiles grouping & indexing extension for GeoPackages_.
+part:: The data store GeoPackages SHALL be organized using the _deterministic hierarchical tiles grouping & indexing extension for GeoPackages_.
+part:: The primary (or single) GeoPackage as defined by that extension SHALL be considered the primary file of the data store e.g., used as the output target of a producer or the file to open for a reader.
+====
+
+==== 2D Tile Matrix Sets
+
+[requirement]
+====
+[%metadata]
+label:: /req/gpkg-data-store/2dtms
+description:: For making use of the _2D Tile Matrix Set extension for GeoPackages_.
+part:: The data store GeoPackages SHALL implement the _2D Tile Matrix Set (2DTMS) extension for GeoPackages_.
+part:: All tiled GeoPackage data layers, and all package entries of the _deterministic hierarchical tiles grouping & indexing for GeoPackages_ SHALL reference the shared 2D Tile Matrix sets defined in that 2DTMS extension.
+====

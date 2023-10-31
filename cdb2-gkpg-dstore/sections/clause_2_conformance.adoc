@@ -1,0 +1,161 @@
+== Conformance
+The one Standardization Target for this standard is Data Stores.
+
+The OGC CDB 2.0 standards define a conceptual model and data stores for encoding different types of data, including detailed 3D environments,
+according to that conceptual model with a focus on deterministic performance and scalability.
+The CDB standards enable a variety of use cases ranging from mobile computing at the edge to
+large scale data repositories, including training, simulation, digital twins and acting as an efficient backing data store for OGC API implementations.
+
+This standard is organized into multiple requirements classes, of which only _GeoPackage Data Store_ is mandatory.
+
+This standard identifies twentyone Conformance Classes. Each Conformance Class has an associated Requirements Class.
+The Requirements Classes define the functional requirements which will be tested through the associated Conformance Class.
+Only the "GeoPackage Data Store" requirements class is mandatory, all others are optional.
+
+The Requirements Classes for _OGC CDB 2.0 - Part 2: GeoPackage Data Store_ are:
+
+=== Requirements classes defining data store organization
+
+* <<rc_gpkg-data-store,*GeoPackage Data Store*>>
+* <<rc_single-gpkg,*Single GeoPackage*>>
+* <<rc_single-gpkg-layer,*Single GeoPackage Data Layers*>>
+* <<rc_lod-grouped,*LoD-grouped GeoPackages*>>
+
+=== Requirements classes defining tiling schemes
+
+* <<rc_gnosis-global-grid,*GNOSIS Global Grid*>>
+* <<rc_cdb1-global-grid,*CDB 1 Global Grid*>>
+
+=== Requirements classes defining imagery encodings
+
+* <<rc_jpeg-imagery,*JPEG Imagery*>>
+* <<rc_jpeg-xl-imagery,*JPEG-XL Imagery*>>
+
+=== Requirements classes defining coverage data encodings
+
+* <<rc_geotiff-coverages,*GeoTIFF Coverage Data*>>
+* <<rc_png-coverages,*PNG Coverage Data*>>
+
+=== Requirements classes defining vector data encodings
+
+* <<rc_untiled-vector,*Untiled WKB Vector Data*>>
+* <<rc_tiled-vector,*Tiled Vector Data*>>
+* <<rc_wkb-collection-tiles,*WKB Collection Tiled Vector Data*>>
+
+=== Requirements classes defining 3D Models storage and encodings
+
+* <<rc_ref-3D-models,*Referenced 3D Models*>>
+* <<rc_ref-shared-3D-models,*Referenced Shared 3D Models*>>
+* <<rc_ref-unique-3D-models,*Referenced Unique 3D Models*>>
+* <<rc_integrated-3D-modeltiles,*Referenced Integrated 3D Model Tiles*>>
+* <<rc_integrated-unique-3D-model-tiles,*Referenced Integrated Unique 3D Model Tiles*>>
+* <<rc_integrated-shared-3D-model-tiles,*Referenced Integrated Shared 3D Model Tiles*>>
+* <<rc_gltf,*glTF 3D Models*>>
+* <<rc_openflight,*OpenFlight 3D Models*>>
+
+Conformance with this standard shall be checked using all the relevant tests specified in Annex A (normative) of this document.
+The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing web site.
+
+In order to conform to this OGC® implementation standard, a data store shall implement at minimum the "GeoPackage Data Store" requirements class defined in Annex A (normative).
+
+All requirements-classes and conformance-classes described in this document are owned by the standard(s) identified.
+
+=== Profiling this standard
+
+This standard is organized in a modular way so as to make it easy to profile it for a particular use case, such as
+a data repository or mobile computing at the edge.
+An application profile of this standard can depend on the mandatory _GeoPackage Data Store_ conformance class
+as well as additional conformance requirements class specifying the use of a particular data organization, tiling grid
+or encoding for specific data types, and can optionally introduce additional restrictions.
+The following table illustrates some example profiles that could be defined based on this standard.
+
+[#table_example_profiles,reftext='{table-caption} {counter:table-num}']
+.Example profiles with dependencies and restrictions
+[options="header"]
+|===
+| Profile              | Requirement classes   | Additional restrictions
+| *Repository*         | GeoPackage Data Store +
+LoD-Grouped GeoPackages +
+GNOSIS Global Grid +
+GeoTIFF Coverage Data +
+Tiled Vector Data +
+WKB Collection Tiled Vector Data +
+Referenced 3D Models +
+Referenced Shared 3D Models +
+Referenced Unique 3D Models +
+OpenFlight 3D Models +
+JPEG-XL Imagery | Grouping tiles by 6 LoD +
+Packaging data layers separately
+| *Simulation*         | GeoPackage Data Store +
+LoD-Grouped GeoPackages +
+GNOSIS Global Grid +
+PNG Coverage Data +
+Tiled Vector Data +
+WKB Collection Tiled Vector Data +
+Referenced 3D Models +
+Referenced Shared 3D Models +
+Integrated Unique 3D Model Tiles +
+glTF 3D Models +
+JPEG-XL Imagery |
+| *Mobile*             | GeoPackage Data Store +
+Single GeoPackage Data Store +
+GNOSIS Global Grid +
+PNG Coverage Data +
+Untiled Vector Data +
+Referenced Shared 3D Models +
+Integrated Unique 3D Model Tiles +
+glTF 3D Models +
+JPEG Imagery |
+| *Compatibility*      | GeoPackage Data Store +
+LoD-Grouped GeoPackages +
+CDB 1 Global Grid +
+PNG Coverage Data +
+Tiled Vector Data +
+WKB Collection Tiled Vector Data +
+Referenced 3D Models +
+Referenced Shared 3D Models +
+Referenced Unique 3D Models +
+OpenFlight 3D Models +
+JPEG-XL Imagery |
+| *Compatibility + glTF* | GeoPackage Data Store +
+LoD-Grouped GeoPackages +
+CDB 1 Global Grid +
+PNG Coverage Data +
+Tiled Vector Data +
+WKB Collection Tiled Vector Data +
+Referenced 3D Models +
+Referenced Shared 3D Models +
+Referenced Unique 3D Models +
+glTF 3D Models +
+JPEG-XL Imagery |
+|===
+
+=== Summary of conformance URIs
+
+[#table_conformance_urls,reftext='{table-caption} {counter:table-num}']
+.Conformance class URIs
+[cols="30,70",options="header"]
+|===
+| Corresponding requirements class                                                        | Conformance class URI
+| <<rc_gpkg-data-store,*GeoPackage Data Store*>>                                          | http://www.opengis.net/spec/cdb-2/2.0/conf/gpkg-data-store
+| <<rc_single-gpkg,*Single GeoPackage*>>                                                  | http://www.opengis.net/spec/cdb-2/2.0/conf/single-gpkg
+| <<rc_single-gpkg-layer,*Single GeoPackage Data Layers*>>                                | http://www.opengis.net/spec/cdb-2/2.0/conf/single-gpkg-layer
+| <<rc_lod-grouped,*LoD-grouped GeoPackages*>>                                            | http://www.opengis.net/spec/cdb-2/2.0/conf/lod-grouped
+| <<rc_gnosis-global-grid,*GNOSIS Global Grid*>>                                          | http://www.opengis.net/spec/cdb-2/2.0/conf/gnosis-global-grid
+| <<rc_cdb1-global-grid,*CDB 1 Global Grid*>>                                             | http://www.opengis.net/spec/cdb-2/2.0/conf/cdb1-global-grid
+| <<rc_jpeg-imagery,*JPEG Imagery*>>                                                      | http://www.opengis.net/spec/cdb-2/2.0/conf/jpeg-imagery
+| <<rc_jpeg-xl-imagery,*JPEG-XL Imagery*>>                                                | http://www.opengis.net/spec/cdb-2/2.0/conf/jpeg-xl-imagery
+| <<rc_geotiff-coverages,*GeoTIFF Coverage Data*>>                                        | http://www.opengis.net/spec/cdb-2/2.0/conf/geotiff-coverages
+| <<rc_png-coverages,*PNG Coverage Data*>>                                                | http://www.opengis.net/spec/cdb-2/2.0/conf/png-coverages
+| <<rc_untiled-vector,*Untiled WKB Vector Data*>>                                         | http://www.opengis.net/spec/cdb-2/2.0/conf/untiled-vector
+| <<rc_tiled-vector,*Tiled Vector Data*>>                                                 | http://www.opengis.net/spec/cdb-2/2.0/conf/tiled-vector
+| <<rc_wkb-collection-tiles,*WKB Collection Tiled Vector Data*>>                          | http://www.opengis.net/spec/cdb-2/2.0/conf/wkb-collection
+| <<rc_ref-3D-models,*Referenced 3D Models*>>                                             | http://www.opengis.net/spec/cdb-2/2.0/conf/ref-3D-models
+| <<rc_ref-shared-3D-models,*Referenced Shared 3D Models*>>                               | http://www.opengis.net/spec/cdb-2/2.0/conf/ref-shared-3D-models
+| <<rc_ref-unique-3D-models,*Referenced Unique 3D Models*>>                               | http://www.opengis.net/spec/cdb-2/2.0/conf/ref-unique-3D-models
+| <<rc_integrated-3D-modeltiles,*Referenced Integrated 3D Model Tiles*>>                  | http://www.opengis.net/spec/cdb-2/2.0/conf/integrated-3D-modeltiles
+| <<rc_integrated-unique-3D-model-tiles,*Referenced Integrated Unique 3D Model Tiles*>>   | http://www.opengis.net/spec/cdb-2/2.0/conf/integrated-unique-3D-model-tiles
+| <<rc_integrated-shared-3D-model-tiles,*Referenced Integrated Shared 3D Model Tiles*>>   | http://www.opengis.net/spec/cdb-2/2.0/conf/integrated-shared-3D-model-tiles
+| <<rc_gltf,*glTF 3D Models*>>                                                            | http://www.opengis.net/spec/cdb-2/2.0/conf/gltf
+| <<rc_openflight,*OpenFlight 3D Models*>>                                                | http://www.opengis.net/spec/cdb-2/2.0/conf/openflight
+|===

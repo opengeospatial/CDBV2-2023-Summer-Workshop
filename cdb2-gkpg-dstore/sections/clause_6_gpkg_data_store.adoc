@@ -1,0 +1,21 @@
+[obligation=normative]
+== Requirement Class "GeoPackage Data Store"
+
+=== Overview
+
+The "GeoPackage Data Store" Requirement Class defines the mandatory requirements that must be satisfied by all data stores conforming to this
+CDB 2.0 GeoPackage Data Store standard.
+
+These requirements specify:
+
+* an encoding for datasets structured according to the https://portal.ogc.org/files/104639[_OGC CDB 2.0 - Part 1: Core_ conceptual model],
+* the use of https://www.geopackage.org/spec131/index.html[_OGC GeoPackage_] as the container to store the data,
+* how to store metadata required by the Core conceptual model in GeoPackages,
+* use of the _deterministic hierarchical tiles grouping & indexing extension for GeoPackages_, allowing to support different use cases from
+  mobile computing at the edge to large scale data repositories, by configuring how data is stored in a single GeoPackage file, or across
+  multiple GeoPackages split by data layer and or tiles and
+* use of the _2D Tile matrix Set extension for GeoPackages_, providing support for variable width tile matrix sets in GeoPackages.
+
+The "GeoPackage Data Store" Requirement Class is the only mandatory Requirements Class.
+
+include::../requirements/requirements_class_gpkg_data_store.adoc[]

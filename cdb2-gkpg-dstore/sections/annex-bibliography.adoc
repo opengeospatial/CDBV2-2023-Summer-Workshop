@@ -1,0 +1,6 @@
+[bibliography]
+[[Bibliography]]
+== Bibliography
+
+* [[[OGC2015,OGCTB12]]], _OGC: OGC Testbed 12 Annex B: Architecture_ (2015).
+* [[[OGC06-121r9,OGC06-121r9]]], _OGC: 	OGC Web Service Common Implementation Specification_, 	https://portal.ogc.org/files/?artifact_id=38867[OGC 06-121r9]

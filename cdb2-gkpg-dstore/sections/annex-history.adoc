@@ -1,0 +1,8 @@
+[appendix]
+== Revision History
+
+[options="header"]
+|===
+|Date |Release |Editor | Primary clauses modified |Description
+|2023-10-30 |0.1 |Jérôme St Louis |all |initial version at the October 2023 Code Sprint in London
+|===

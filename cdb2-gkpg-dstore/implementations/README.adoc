@@ -1,0 +1,52 @@
+# Implementations
+
+#work-in-progress#
+
+This page lists software packages that implement OGC CDB 2.0 - Part 2: GeoPackage Data Store.
+
+Two types of software packages are distinguished:
+
+* Producer implementations are software products that can be used to produce CDB data stores conforming to this standard.
+* Readers implementations are software products that can read CDB data stores conforming to this standard for purposes such as visualization or analytics.
+
+## Contribute
+
+If you have a producer or reader implementation of OGC CDB 2.0 - Part 2: GeoPackage Data Store, we welcome a pull request to update this page to add or update an entry for the product.
+Please include a contact email address so that we may later contact you in case of page updates or questions.
+
+//If you have a producer product, please consider to https://www.ogc.org/resource/products/registration[register it in the OGC Product Database] and https://cite.opengeospatial.org/teamengine/[test it for compliance], too.
+
+## Producers
+
+.Producer implementations
+[cols="6,4",options="header",grid="rows",stripes="hover"]
+|===
+| Product | Contact email or GitHub handle
+
+| http://gnosis.earth/[GNOSIS Cartographer]
+| https://github.com/jerstlouis[Jerome St-Louis]
+
+| https://www.flightsafety.com/[Flight Safety]
+| https://github.com/ryanfranz[Ryan Franz]
+
+| TBA
+| TBA
+
+|===
+
+## Readers
+
+.Reader implementations
+[cols="6,4",options="header",grid="rows",stripes="hover"]
+|===
+| Product | Contact email or GitHub handle
+
+| http://gnosis.earth/[GNOSIS Cartographer]
+| https://github.com/jerstlouis[Jerome St-Louis]
+
+| https://www.flightsafety.com/[Flight Safety]
+| https://github.com/ryanfranz[Ryan Franz]
+
+|TBA
+|TBA
+|===
