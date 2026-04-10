@@ -1,9 +1,9 @@
 {
         "0":  {
-                "OGC_doc_number": "23-XXX",
-                "urn":"http://www.opengis.net/doc/is/cdb2-2/1.0",
+                "OGC_doc_number": "24-047",
+                "urn":"http://www.opengis.net/doc/is/cdb-2/2.0",
                 "title":"OGC CDB 2.0 - Part 2: GeoPackage Data Store",
-                "version":"1.0.0",
-                "path":"cdb2-gkpg-dstore/23-XXX.adoc"
+                "version":"0.0.1",
+                "path":"cdb2-gkpg-dstore/24-047.adoc"
         }
 }

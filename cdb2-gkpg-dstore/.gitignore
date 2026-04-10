@@ -1,0 +1,14 @@
+workdir
+24-047*.doc
+24-047*.err
+24-047*.html
+24-047*.pdf
+24-047*.presentation.xml
+24-047*.xml
+24-047*.rxl
+24-047*.err.html
+24-047*.asciidoc.log.txt
+metanorma.asciidoc.log.txt
+iev/
+relaton/
+.DS_Store
